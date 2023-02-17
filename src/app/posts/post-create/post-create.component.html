@@ -1,0 +1,29 @@
+<!-- One way data binding
+  Take a reference of the input (#txtArea), pass the object and then
+  update the value of a property within the class and render it in html
+
+<textarea [value]="txt" #txtArea></textarea>
+<hr>
+<button (click)="OnAddPost_OneWayDataBinding(txtArea)" >Add post - One way data binding</button>
+<p>{{ txt }}</p>
+
+-->
+
+<!-- Two way data binding using ngModel
+
+<textarea [(ngModel)]="txt"></textarea>
+<hr>
+<p>{{ txt }}</p>
+
+-->
+
+<mat-card>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="enteredValue"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" (click)="OnAddPost()">Click me</button>
+
+</mat-card>
+
+<p>{{ txt }}</p>
