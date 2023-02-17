@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Post } from '../post.model';
 
 @Component({
   selector: 'app-post-create',
@@ -6,8 +7,12 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent {
-  public enteredValue='Type your thoughts here...';
-  public txt = ''
+  public enteredTitle = 'Type post title here';
+  public enteredContent='Type post content here...';
+
+  public txt = '';
+  @Output() postCreated = new EventEmitter<Post>();
+
   constructor() {
 
   }
@@ -18,6 +23,10 @@ export class PostCreateComponent {
   // }
 
   OnAddPost(): void {
-    this.txt = this.enteredValue;
+    const post = {
+      title: this.enteredTitle,
+      content: this.enteredContent
+    }
+    this.postCreated.emit(post)
   }
 }
